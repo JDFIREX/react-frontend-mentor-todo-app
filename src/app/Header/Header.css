@@ -1,0 +1,16 @@
+.Header {
+  width: 34rem;
+  border: 1px solid red;
+  @apply flex relative flex-row justify-between items-center mt-16 top-3;
+}
+
+.Header h1 {
+  letter-spacing: 1.15rem;
+  @apply text-white font-bold text-4xl;
+}
+
+.Header button {
+  background-color: transparent;
+  border: none;
+}
+/*# sourceMappingURL=Header.css.map */
