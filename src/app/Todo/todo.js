@@ -171,11 +171,24 @@ const TodoList = ({list,setList}) => {
         </>
     )
 }
+
+
 const Todo =({Darkmode}) => {
 
+    const [List, setList] = useState(window.localStorage.getItem("list") ? JSON.parse(window.localStorage.getItem("list")) : [])
+    const [id, setId] = useState( window.localStorage.getItem("id") ? Number(window.localStorage.getItem("id")) : 1)
 
-    const [List, setList] = useState([])
-    const [id, setId] = useState(1)
+    useEffect(() => {
+        if(List.length === 0){
+            setId(1)
+        }
+        window.localStorage.removeItem("list");
+        window.localStorage.removeItem("id");
+        window.localStorage.setItem("list", JSON.stringify(List))
+        window.localStorage.setItem("id", id)
+    },[setList, List, id , setId])
+
+
 
 
     const ConfirmTodo = (Checked,todo) => {
