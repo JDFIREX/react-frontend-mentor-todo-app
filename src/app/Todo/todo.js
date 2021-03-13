@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import Check from "./../../images/icon-check.svg"
 import close from "./../../images/icon-cross.svg"
 import "./todo.css"
@@ -46,7 +46,7 @@ const TodoItem = React.memo(({l,deleteItem,setList,list}) => {
             todo :  l.todo,
             Checked : !l.Checked
         }
-        let newList = list.map(r => r.id === l.id ? r = item : r = r);
+        let newList = list.map(nl => nl.id === l.id ? nl = item : nl);
         setList([...newList])
     }
 

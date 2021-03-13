@@ -13,7 +13,7 @@ const Root = () => {
 
     return (
         <React.StrictMode>
-            <img src={design} className="design" ></img>
+            <img src={design} className="design" alt="wer" ></img>
             <div className="root_bg"></div>
             <Header setDarkmode={setDarkmode} Darkmode={Darkmode}/>
             <Todo />

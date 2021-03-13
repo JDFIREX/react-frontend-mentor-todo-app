@@ -1,10 +1,10 @@
 .Header{
     width: 34rem;
-    border: 1px solid red;
     @apply flex relative flex-row justify-between items-center mt-16 top-3;
     h1{
         letter-spacing: 1.15rem;
-        @apply text-white font-bold text-4xl;
+        color : hsl(234, 39%, 85%);
+        @apply  font-bold text-4xl;
     }
     button{
         background-color: transparent;

@@ -3,6 +3,10 @@
   @apply flex flex-col mt-12;
 }
 
+.Todo button:focus {
+  outline: 1px solid #4d5066;
+}
+
 .Todo .NewTodo {
   background-color: #25273c;
   @apply w-full flex flex-row mt-1 h-16 rounded-lg items-center px-6;
@@ -16,7 +20,7 @@
 .Todo .NewTodo .add__new .button__inner {
   width: 95%;
   height: 95%;
-  background-color: #161722;
+  background-color: #25273c;
   @apply rounded-full z-10;
 }
 
@@ -34,10 +38,6 @@
   background-image: -webkit-gradient(linear, left top, right bottom, from(#57ddff), to(#c058f3));
   background-image: linear-gradient(to right bottom, #57ddff, #c058f3);
   @apply w-6 h-6 bg-transparent;
-}
-
-.Todo .NewTodo .add__new:focus {
-  outline: 1px solid lightgray;
 }
 
 .Todo .NewTodo .input__box {
@@ -66,7 +66,7 @@
 }
 
 .Todo .NewTodo .input__box input:focus {
-  outline: 1px solid lightgray;
+  outline: 1px solid #4d5066;
 }
 
 .Todo .NewTodo .input__confirm {
@@ -79,7 +79,7 @@
 }
 
 .Todo .NewTodo .input__confirm:focus {
-  outline: 1px solid lightgray;
+  outline: none;
 }
 
 .Todo .TodoList {
@@ -88,7 +88,7 @@
 
 .Todo .TodoList .List__item {
   background-color: #25273c;
-  border-bottom: 1px solid #4d5066;
+  border-bottom: 1px solid #393a4c;
   @apply w-full flex flex-row items-center h-16 px-6  z-30;
 }
 
@@ -105,7 +105,7 @@
   width: 90%;
   height: 90%;
   margin-top: 4%;
-  background-color: #161722;
+  background-color: #25273c;
   @apply rounded-full z-10;
 }
 
@@ -125,56 +125,42 @@
   @apply w-6 h-6 bg-transparent;
 }
 
-.Todo .TodoList .List__item .item_check:focus {
-  outline: 1px solid lightgray;
-}
-
-.Todo .TodoList .List__item .item__todo {
+.Todo .TodoList .List__item .item__todo, .Todo .TodoList .List__item .item__todo__checked {
   @apply ml-6 bg-transparent w-5/6;
 }
 
-.Todo .TodoList .List__item .item__todo p {
-  @apply bg-transparent w-full text-lg font-normal text-white;
-}
-
-.Todo .TodoList .List__item .item__todo__checked {
-  @apply ml-6 bg-transparent w-5/6;
+.Todo .TodoList .List__item .item__todo p, .Todo .TodoList .List__item .item__todo__checked p {
+  color: #cacde8;
+  @apply bg-transparent w-full text-lg font-normal;
 }
 
 .Todo .TodoList .List__item .item__todo__checked p {
   color: #4d5066;
-  @apply bg-transparent w-full text-lg font-bold  line-through;
 }
 
 .Todo .TodoList .List__item .item__delete {
   @apply hidden;
 }
 
-.Todo .TodoList .List__item:hover {
-  background-color: #161722;
+.Todo .TodoList .List__item:hover .item__delete {
+  @apply block mt-1;
 }
 
-.Todo .TodoList .List__item:hover .item__delete {
-  @apply block;
+.Todo .TodoList .List__item:hover .item__todo p {
+  color: #e4e5f1;
 }
 
 .Todo .actions {
-  border: 1px solid red;
+  background-color: #25273c;
   @apply w-full flex flex-row items-center justify-between h-14 px-6  z-30 rounded-bl-lg rounded-br-lg;
-}
-
-.Todo .actions button {
-  border: none;
-  @apply bg-transparent;
 }
 
 .Todo .actions .items__left p {
   color: #4d5066;
-  @apply font-normal text-sm;
+  @apply font-bold text-sm;
 }
 
 .Todo .actions .actions__sort {
-  border: 1px solid red;
   width: 10.5rem;
   @apply ml-8 flex  pl-1 flex-row justify-between items-center h-full;
 }
@@ -188,20 +174,27 @@
 }
 
 .Todo .actions .actions__sort p {
-  color: #4d5066;
-  @apply font-bold;
-}
-
-.Todo .actions .actions__sort p:hover {
-  color: white;
+  color: #777a92;
 }
 
 .Todo .actions .clear__completed p {
   color: #4d5066;
+}
+
+.Todo .actions p {
   @apply font-bold;
 }
 
-.Todo .actions .clear__completed p:hover {
-  color: white;
+.Todo .actions .actions__sort p:hover, .Todo .actions .clear__completed p:hover {
+  color: #e4e5f1;
+}
+
+.Todo .actions button {
+  border: none;
+  @apply bg-transparent;
+}
+
+.Todo .actions button:focus {
+  outline: none;
 }
 /*# sourceMappingURL=todo.css.map */

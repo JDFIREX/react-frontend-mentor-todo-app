@@ -1,10 +1,14 @@
 .Todo{
     width: 34rem;
-    // border: 1px solid red;
     @apply flex flex-col mt-12;
 
+    button{
+        &:focus{
+            outline: 1px solid hsl(233, 14%, 35%);
+        }
+    }
+
     .NewTodo{
-        // border: 1px solid yellow;
         background-color: hsl(235, 24%, 19%);
         @apply w-full flex flex-row mt-1 h-16 rounded-lg items-center px-6;
 
@@ -14,7 +18,7 @@
             .button__inner{
                 width: 95%;
                 height: 95%;
-                background-color: hsl(235, 21%, 11%);
+                background-color: hsl(235, 24%, 19%);
                 @apply rounded-full z-10;
             }
             .button__inner__checked{
@@ -28,9 +32,6 @@
                 background-image: linear-gradient(to right bottom, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
                 @apply w-6 h-6 bg-transparent;
             }
-            &:focus{
-                outline: 1px solid lightgray;
-            }
         }
         .input__box{
             @apply ml-6 bg-transparent w-5/6;
@@ -41,7 +42,7 @@
                     color : hsl(234, 11%, 52%);
                 }
                 &:focus{
-                    outline: 1px solid lightgray;
+                    outline: 1px solid hsl(233, 14%, 35%);
                 }
             }
         }
@@ -52,18 +53,16 @@
                 @apply w-4;
             }
             &:focus{
-                outline: 1px solid lightgray;
+                outline: none;
             }
         }
     }
     .TodoList{
-        // border: 1px solid yellow;
-        @apply w-full mt-6;
+        @apply w-full mt-6 ;
         
         .List__item{
             background-color: hsl(235, 24%, 19%);
-            border-bottom:  1px solid hsl(233, 14%, 35%);
-            // border: 1px solid greenyellow;
+            border-bottom:  1px solid hsl(237, 14%, 26%);
             @apply w-full flex flex-row items-center h-16 px-6  z-30;
             &:nth-child(1){
                 @apply rounded-tl-lg rounded-tr-lg;
@@ -75,7 +74,7 @@
                     width: 90%;
                     height: 90%;
                     margin-top: 4%;
-                    background-color: hsl(235, 21%, 11%);
+                    background-color: hsl(235, 24%, 19%);
                     @apply rounded-full z-10;
                 }
                 .item__inner__checked{
@@ -89,49 +88,44 @@
                     background-image: linear-gradient(to right bottom, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
                     @apply w-6 h-6 bg-transparent;
                 }
-                &:focus{
-                    outline: 1px solid lightgray;
-                }
             }
-            .item__todo{
+            .item__todo,.item__todo__checked{
                 @apply ml-6 bg-transparent w-5/6;
                 p{
-                    @apply bg-transparent w-full text-lg font-normal text-white;
+                    color : hsl(234, 39%, 85%);
+                    @apply bg-transparent w-full text-lg font-normal;
                 }
             }
             .item__todo__checked{
-                @apply ml-6 bg-transparent w-5/6;
                 p{
                     color : hsl(233, 14%, 35%);
-                    @apply bg-transparent w-full text-lg font-bold  line-through;
                 }
             }
             .item__delete{
                 @apply hidden;
             }
             &:hover{
-                background-color: hsl(235, 21%, 11%);
                 .item__delete{
-                    @apply block;
+                    @apply block mt-1;
+                }
+                .item__todo{
+                    p{
+                        color : hsl(236, 33%, 92%);
+                    }
                 }
             }
         }
     }
     .actions{
-        border: 1px solid red;
+        background-color: hsl(235, 24%, 19%);
         @apply w-full flex flex-row items-center justify-between h-14 px-6  z-30 rounded-bl-lg rounded-br-lg;
-        button{
-            border: none;
-            @apply bg-transparent;
-        }
         .items__left{
             p{
                 color : hsl(233, 14%, 35%);
-                @apply font-normal text-sm;
+                @apply font-bold text-sm;
             }
         }
         .actions__sort{
-            border: 1px solid red;
             width: 10.5rem;
             @apply ml-8 flex  pl-1 flex-row justify-between items-center h-full;
             .items__all{
@@ -143,20 +137,29 @@
                 }
             }
             p{
-                color : hsl(233, 14%, 35%);
-                @apply font-bold;
-                &:hover{
-                    color : white;
-                }
+                color : hsl(234, 11%, 52%);
             }
         }
         .clear__completed{
             p{
                 color : hsl(233, 14%, 35%);
-                @apply font-bold;
+            }
+        }
+        p{
+            @apply font-bold;
+        }
+        .actions__sort,.clear__completed{
+            p{
                 &:hover{
-                    color : white;
+                    color : hsl(236, 33%, 92%);
                 }
+            }
+        }
+        button{
+            border: none;
+            @apply bg-transparent;
+            &:focus{
+                outline: none;
             }
         }
     }
