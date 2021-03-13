@@ -24,7 +24,7 @@
 
 .Todo .NewTodo, .Todo__light .NewTodo {
   background-color: #25273c;
-  @apply w-full flex flex-row mt-1 h-16 rounded-lg items-center px-6;
+  @apply w-full flex flex-row mt-1 h-16 rounded-lg items-center px-6 shadow-md;
 }
 
 .Todo .NewTodo .add__new, .Todo__light .NewTodo .add__new {
@@ -98,13 +98,14 @@
 }
 
 .Todo .TodoList, .Todo__light .TodoList {
-  @apply w-full mt-6 max-h-96 overflow-y-auto;
+  @apply w-full mt-6 max-h-96 overflow-y-auto shadow-2xl;
 }
 
 .Todo .TodoList .List__item, .Todo__light .TodoList .List__item {
   background-color: #25273c;
   border-bottom: 1px solid #393a4c;
-  @apply w-full flex flex-row items-center h-16 px-6  z-30;
+  min-height: 4rem;
+  @apply w-full flex flex-row items-center px-6 z-30 relative;
 }
 
 .Todo .TodoList .List__item:nth-child(1), .Todo__light .TodoList .List__item:nth-child(1) {
@@ -113,7 +114,7 @@
 
 .Todo .TodoList .List__item .item_check, .Todo__light .TodoList .List__item .item_check {
   border: none;
-  @apply w-6 h-6 rounded-full flex justify-center items-center bg-gray-600;
+  @apply w-6 h-6 self-start relative top-5 rounded-full flex justify-center items-center bg-gray-600;
 }
 
 .Todo .TodoList .List__item .item_check .item__inner, .Todo__light .TodoList .List__item .item_check .item__inner {
@@ -141,6 +142,8 @@
 }
 
 .Todo .TodoList .List__item .item__todo, .Todo .TodoList .List__item .item__todo__checked, .Todo__light .TodoList .List__item .item__todo, .Todo__light .TodoList .List__item .item__todo__checked {
+  max-width: 83.333%;
+  overflow-wrap: break-word;
   @apply ml-6 bg-transparent w-5/6;
 }
 
@@ -155,7 +158,7 @@
 }
 
 .Todo .TodoList .List__item .item__delete, .Todo__light .TodoList .List__item .item__delete {
-  @apply hidden;
+  @apply hidden relative top-5 self-start ml-1;
 }
 
 .Todo .TodoList .List__item:hover .item__delete, .Todo__light .TodoList .List__item:hover .item__delete {
@@ -310,5 +313,70 @@
 
 .Todo__light .actions .actions__sort p:hover, .Todo__light .actions .clear__completed p:hover {
   color: #484b6a;
+}
+
+@media only screen and (max-width: 600px) {
+  .Todo, .Todo__light {
+    width: 100%;
+    padding: 0 5vw;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .Todo .NewTodo, .Todo__light .NewTodo {
+    @apply px-4;
+  }
+  .Todo .NewTodo .input__box, .Todo__light .NewTodo .input__box {
+    @apply ml-4;
+  }
+  .Todo .TodoList .List__item, .Todo__light .TodoList .List__item {
+    @apply px-4;
+  }
+  .Todo .TodoList .List__item .item__todo, .Todo .TodoList .List__item .item__todo__checked, .Todo__light .TodoList .List__item .item__todo, .Todo__light .TodoList .List__item .item__todo__checked {
+    @apply ml-4;
+  }
+  .Todo .actions, .Todo__light .actions {
+    @apply h-14 px-4 relative;
+  }
+  .Todo .actions .actions__sort, .Todo__light .actions .actions__sort {
+    background-color: #25273c;
+    @apply ml-0 w-full pl-0 left-0 justify-center items-center h-12 absolute mt-36 rounded-lg shadow-md;
+  }
+  .Todo .actions .actions__sort p, .Todo__light .actions .actions__sort p {
+    @apply px-5;
+  }
+  .Todo .drag p, .Todo__light .drag p {
+    @apply font-medium text-sm mt-24 mb-5;
+  }
+  .Todo__light .actions .actions__sort {
+    background-color: #fafafa;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .Todo .NewTodo .input__box input, .Todo__light .NewTodo .input__box input {
+    @apply text-sm;
+  }
+  .Todo .TodoList .item_check, .Todo__light .TodoList .item_check {
+    @apply w-5 h-5;
+  }
+  .Todo .TodoList .item_check .item__inner__checked, .Todo__light .TodoList .item_check .item__inner__checked {
+    @apply w-5 h-5;
+  }
+  .Todo .TodoList .item_check:hover, .Todo__light .TodoList .item_check:hover {
+    @apply w-5 h-5;
+  }
+  .Todo .TodoList .item__todo, .Todo .TodoList .item__todo__checked, .Todo__light .TodoList .item__todo, .Todo__light .TodoList .item__todo__checked {
+    max-width: 65vw;
+  }
+  .Todo .TodoList .item__todo p, .Todo .TodoList .item__todo__checked p, .Todo__light .TodoList .item__todo p, .Todo__light .TodoList .item__todo__checked p {
+    @apply text-sm;
+  }
+  .Todo .TodoList .item__delete, .Todo__light .TodoList .item__delete {
+    @apply w-4 h-4;
+  }
+  .Todo .TodoList .item__delete img, .Todo__light .TodoList .item__delete img {
+    @apply w-4 h-4;
+  }
 }
 /*# sourceMappingURL=todo.css.map */

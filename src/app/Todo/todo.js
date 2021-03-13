@@ -1,4 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react"
+import {DragDropContext, Droppable, Draggable} from "react-beautiful-dnd"
+
+
 import Check_light from "./../../images/icon-check.svg"
 import Check_dark from "./../../images/icon-check-dark.svg"
 
@@ -34,38 +37,60 @@ const NewTodo = React.memo(({ConfirmTodo,Darkmode}) => {
     )
 })
 
-const TodoItem = ({l,deleteItem,itemChecked}) => {
+const TodoItem = ({l,deleteItem,itemChecked,index}) => {
     return(
-        <div className="List__item">
-            <button className="item_check" onClick={() => itemChecked({id : l.id,todo :  l.todo,Checked : !l.Checked}, l.id)}>
-                <div className={l.Checked === true ? "item__inner__checked":"item__inner"} data-id={l.id}>
-                    {l.Checked === true ? <img src={Check_light} alt="check new todo"/> : null }
+        <Draggable draggableId={`${l.id}`} index={index}>
+        {
+            (provided) => (
+                <div className="List__item" {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
+                    <button className="item_check" onClick={() => itemChecked({id : l.id,todo :  l.todo,Checked : !l.Checked}, l.id)}>
+                        <div className={l.Checked === true ? "item__inner__checked":"item__inner"} data-id={l.id}>
+                            {l.Checked === true ? <img src={Check_light} alt="check new todo"/> : null }
+                        </div>
+                    </button>
+                    <div className={l.Checked === true ? "item__todo__checked"  :"item__todo"}>
+                        <p>{l.todo}</p>
+                    </div>
+                    <div className="item__delete">
+                        <img src={close}  alt="delete todo" data-key={l.id} onClick={deleteItem} onKeyDown={(e) => e.key === "Enter" ? deleteItem : null}/>
+                    </div>
                 </div>
-            </button>
-            <div className={l.Checked === true ? "item__todo__checked"  :"item__todo"}>
-                <p>{l.todo}</p>
-            </div>
-            <div className="item__delete">
-                <img src={close}  alt="delete todo" data-key={l.id} onClick={deleteItem} onKeyDown={(e) => e.key === "Enter" ? deleteItem : null}/>
-            </div>
-        </div>
+            )
+        }
+        </Draggable>
     )
 }
 
 const ListActions = React.memo(({Listlength,setSort,deleteCompleted}) => {
+
+    const handleClick = (e) => {
+
+        document.querySelector(".items__all").style.borderBottom = "none";
+        document.querySelector(".items__active").style.borderBottom = "none";
+        document.querySelector(".items__completed").style.borderBottom = "none";
+        setSort(e.target.dataset.s)
+        switch(e.target.dataset.s){
+            case "all" :  document.querySelector(".items__all").style.borderBottom = "1px solid gray"; break;
+            case "active" :  document.querySelector(".items__active").style.borderBottom = "1px solid gray";; break;
+            case "completed" :  document.querySelector(".items__completed").style.borderBottom = "1px solid gray";; break;
+            default : ; break;
+        }
+    }
+
+
     return (
         <div className="actions">
             <div className="items__left">
                 <p>{Listlength} items left</p>
             </div>
             <div className="actions__sort">
-                <button className="items__all" onClick={(e) => setSort(e.target.dataset.s)} >
+                <button className="items__all" onClick={handleClick} >
                     <p data-s="all">All</p>
                 </button>
-                <button className="items__active"  onClick={(e) => setSort(e.target.dataset.s)} >
+                <button className="items__active"  onClick={handleClick} >
                     <p data-s="active">Active</p>
                 </button>
-                <button className="items__completed" onClick={(e) => setSort(e.target.dataset.s)} >
+                <button className="items__completed" onClick={handleClick} >
                     <p data-s="completed">Completed</p>
                 </button>
             </div>
@@ -98,21 +123,48 @@ const TodoList = ({list,setList}) => {
     },[list,setList])
 
 
+    const DragEnd = (result) => {
+        const {destination,source} = result;
+        if(!destination){
+            return;
+        }
+        if(destination.index === source.index){
+            return;
+        }
+        let cp = source.index;
+        let mp = destination.index;
+        let item = list.splice(cp,1);
+        list.splice(mp,0,...item);
+        setList([...list])
+    }
+
+
     useEffect(() => {
         setLength(list.filter(l => !l.Checked).length);
     },[list,setList])
 
     return(
         <>
-            <div className="TodoList">
-                {sort === "all" ? (
-                    list.map(l => <TodoItem l={l} key={l.id} itemChecked={itemChecked} deleteItem={deleteItem}/>)
-                ) : sort === "active" ? (
-                    list.map(l => l.Checked === false && <TodoItem l={l} key={l.id} itemChecked={itemChecked}  deleteItem={deleteItem}/>)
-                ) : (
-                    list.map(l => l.Checked === true && <TodoItem l={l} key={l.id} itemChecked={itemChecked}  deleteItem={deleteItem}/>)
-                )}
-            </div>
+            <DragDropContext onDragEnd={DragEnd} >
+                <Droppable droppableId={"1"}>
+                    {
+                        (provided) => (
+                            <div className="TodoList" {...provided.droppableProps} ref={provided.innerRef}>
+
+                                    {sort === "all" ? (
+                                        list.map((l,index) => <TodoItem l={l} key={l.id} index={index} itemChecked={itemChecked} deleteItem={deleteItem}/>)
+                                    ) : sort === "active" ? (
+                                        list.map((l,index) => l.Checked === false && <TodoItem l={l} index={index} key={l.id} itemChecked={itemChecked}  deleteItem={deleteItem}/>)
+                                    ) : (
+                                        list.map((l,index) => l.Checked === true && <TodoItem l={l} index={index} key={l.id} itemChecked={itemChecked}  deleteItem={deleteItem}/>)
+                                    )}
+                                    {provided.placeholder}
+
+                            </div>
+                        )
+                    }
+                </Droppable>
+            </DragDropContext>
             {list.length > 0 && (
                 <ListActions setSort={setSort} deleteCompleted={deleteCompleted} Listlength={Listlength} />
             )}
@@ -122,17 +174,21 @@ const TodoList = ({list,setList}) => {
 const Todo =({Darkmode}) => {
 
 
-    console.log("render todo")
     const [List, setList] = useState([])
+    const [id, setId] = useState(1)
 
 
     const ConfirmTodo = (Checked,todo) => {
+
         if(todo.length > 0){
+
             let item = {
-                id : List.length > 0 ? (Number(List[List.length - 1].id) + 1) : 1,
+                id,
                 Checked,
                 todo
             };
+            setId(id + 1)
+            
             setList((List) => [...List,item])
         }
     }

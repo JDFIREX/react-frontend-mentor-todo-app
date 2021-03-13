@@ -4,7 +4,6 @@ import ReactDOM from "react-dom"
 import Header from "./app/Header/Header"
 import Todo from "./app/Todo/todo"
 import "./index.css"
-import design from "./design/desktop-design-dark.jpg"
 
 const Root = () => {
 
@@ -16,7 +15,6 @@ const Root = () => {
 
     return (
         <React.StrictMode>
-            <img src={design} className="design" alt="wer" ></img>
             {Darkmode === false ? (
                 <div className="root_bg"></div>
             ) : (

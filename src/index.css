@@ -54,12 +54,18 @@ body {
   background-image: url("./images/bg-desktop-light.jpg");
 }
 
-.design {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  opacity: .5;
-  display: none;
+@media only screen and (max-width: 600px) {
+  .root_bg, .root_bg__light {
+    background-image: url("./images/bg-mobile-dark.jpg");
+  }
+  .root_bg__light {
+    background-image: url("./images/bg-mobile-light.jpg");
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  body {
+    font-size: 16px;
+  }
 }
 /*# sourceMappingURL=index.css.map */

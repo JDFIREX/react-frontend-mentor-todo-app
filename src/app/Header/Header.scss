@@ -17,3 +17,10 @@
         color : hsl(0, 0%, 98%);
     }
 }
+
+@media only screen and (max-width : 600px){
+    .Header,.Header_light{
+        width: 100%;
+        padding: 0 5vw;
+    }
+}
