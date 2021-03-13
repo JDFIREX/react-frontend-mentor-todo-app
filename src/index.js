@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import ReactDOM from "react-dom"
 
 import Header from "./app/Header/Header"
@@ -10,13 +10,20 @@ const Root = () => {
 
     const [Darkmode,setDarkmode] = useState(false)
 
+    useEffect(() => {
+        Darkmode === false ? document.querySelector('.body').style.backgroundColor = "hsl(235, 21%, 11%)" : document.querySelector('.body').style.backgroundColor = "hsl(236, 33%, 92%)" 
+    },[Darkmode])
 
     return (
         <React.StrictMode>
             <img src={design} className="design" alt="wer" ></img>
-            <div className="root_bg"></div>
+            {Darkmode === false ? (
+                <div className="root_bg"></div>
+            ) : (
+                <div className="root_bg__light"></div>
+            )}
             <Header setDarkmode={setDarkmode} Darkmode={Darkmode}/>
-            <Todo />
+            <Todo Darkmode={Darkmode}/>
         </React.StrictMode> 
     )
 
@@ -24,4 +31,4 @@ const Root = () => {
 
 
 
-ReactDOM.render(<Root />, document.querySelector('.root'))
+ReactDOM.render(<Root />, document.querySelector('#root'))

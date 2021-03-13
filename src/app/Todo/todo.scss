@@ -1,4 +1,4 @@
-.Todo{
+.Todo,.Todo__light{
     width: 34rem;
     @apply flex flex-col mt-12;
 
@@ -6,6 +6,19 @@
         &:focus{
             outline: 1px solid hsl(233, 14%, 35%);
         }
+    }
+
+    ::-webkit-scrollbar {
+        width: 3px;
+        height: 5px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background-color: black;
+        border-radius: 15px;
+    }
+    ::-webkit-scrollbar-track{
+        background: #ffffff;
+        border-radius: 7px;
     }
 
     .NewTodo{
@@ -16,8 +29,8 @@
             border: none;
             @apply w-6 h-6 rounded-full flex justify-center items-center bg-gray-600;
             .button__inner{
-                width: 95%;
-                height: 95%;
+                width: 90%;
+                height: 90%;
                 background-color: hsl(235, 24%, 19%);
                 @apply rounded-full z-10;
             }
@@ -58,7 +71,8 @@
         }
     }
     .TodoList{
-        @apply w-full mt-6 ;
+        @apply w-full mt-6 max-h-96 overflow-y-auto;
+        
         
         .List__item{
             background-color: hsl(235, 24%, 19%);
@@ -99,6 +113,7 @@
             .item__todo__checked{
                 p{
                     color : hsl(233, 14%, 35%);
+                    @apply line-through;
                 }
             }
             .item__delete{
@@ -160,6 +175,98 @@
             @apply bg-transparent;
             &:focus{
                 outline: none;
+            }
+        }
+    }
+    .drag{
+        @apply w-full flex items-center justify-center;
+        p{
+            @apply font-medium text-sm mt-5;
+            color : hsl(233, 14%, 35%);
+        }
+    }
+}
+
+
+.Todo__light{
+    button{
+        &:focus{
+            outline: 1px solid hsl(233, 11%, 84%);
+        }
+    }
+    .NewTodo{
+        background-color: hsl(0, 0%, 98%);
+        .add__new{
+            background-color:hsl(233, 11%, 84%);
+            .button__inner{
+                background-color: hsl(0, 0%, 98%);
+            }
+        }
+        .input__box{
+            input{
+                color : hsl(235, 19%, 35%);
+                &::placeholder{
+                    color : hsl(236, 9%, 61%);
+                }
+                &:focus{
+                    outline: 1px solid hsl(233, 11%, 84%);
+                }
+            }
+        }
+    }
+    .TodoList{
+        @apply w-full mt-6 ;
+        
+        .List__item{
+            background-color: hsl(0, 0%, 98%);
+            border-bottom:  1px solid hsl(236, 33%, 92%);
+            .item_check{
+                background-color:hsl(233, 11%, 84%);
+                .item__inner{
+                    background-color: hsl(0, 0%, 98%);
+                }
+            }
+            .item__todo,.item__todo__checked{
+                p{
+                    color : hsl(235, 19%, 35%);
+                }
+            }
+            .item__todo__checked{
+                p{
+                    color : hsl(233, 11%, 84%);
+                }
+            }
+            &:hover{
+                .item__todo{
+                    p{
+                        color : hsl(235, 19%, 35%);
+                    }
+                }
+            }
+        }
+    }
+    .actions{
+        background-color: hsl(0, 0%, 98%);
+        .items__left{
+            p{
+                color : hsl(236, 9%, 61%);
+            }
+        }
+        .actions__sort{
+            p{
+                color : hsl(236, 9%, 61%);
+            }
+        }
+        .clear__completed{
+            p{
+                color : hsl(236, 9%, 61%);
+            }
+        }
+        .actions__sort,.clear__completed{
+            p{
+                &:hover{
+                    color : hsl(235, 19%, 35%);
+                }
             }
         }
     }

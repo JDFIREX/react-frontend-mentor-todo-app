@@ -1,4 +1,4 @@
-.Header{
+.Header,.Header_light{
     width: 34rem;
     @apply flex relative flex-row justify-between items-center mt-16 top-3;
     h1{
@@ -9,5 +9,11 @@
     button{
         background-color: transparent;
         border: none;
+    }
+}
+
+.Header_light{
+    h1{
+        color : hsl(0, 0%, 98%);
     }
 }

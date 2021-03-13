@@ -1,107 +1,122 @@
-.Todo {
+.Todo, .Todo__light {
   width: 34rem;
   @apply flex flex-col mt-12;
 }
 
-.Todo button:focus {
+.Todo button:focus, .Todo__light button:focus {
   outline: 1px solid #4d5066;
 }
 
-.Todo .NewTodo {
+.Todo ::-webkit-scrollbar, .Todo__light ::-webkit-scrollbar {
+  width: 3px;
+  height: 5px;
+}
+
+.Todo ::-webkit-scrollbar-thumb, .Todo__light ::-webkit-scrollbar-thumb {
+  background-color: black;
+  border-radius: 15px;
+}
+
+.Todo ::-webkit-scrollbar-track, .Todo__light ::-webkit-scrollbar-track {
+  background: #ffffff;
+  border-radius: 7px;
+}
+
+.Todo .NewTodo, .Todo__light .NewTodo {
   background-color: #25273c;
   @apply w-full flex flex-row mt-1 h-16 rounded-lg items-center px-6;
 }
 
-.Todo .NewTodo .add__new {
+.Todo .NewTodo .add__new, .Todo__light .NewTodo .add__new {
   border: none;
   @apply w-6 h-6 rounded-full flex justify-center items-center bg-gray-600;
 }
 
-.Todo .NewTodo .add__new .button__inner {
-  width: 95%;
-  height: 95%;
+.Todo .NewTodo .add__new .button__inner, .Todo__light .NewTodo .add__new .button__inner {
+  width: 90%;
+  height: 90%;
   background-color: #25273c;
   @apply rounded-full z-10;
 }
 
-.Todo .NewTodo .add__new .button__inner__checked {
+.Todo .NewTodo .add__new .button__inner__checked, .Todo__light .NewTodo .add__new .button__inner__checked {
   background-image: -webkit-gradient(linear, left top, right bottom, from(#57ddff), to(#c058f3));
   background-image: linear-gradient(to right bottom, #57ddff, #c058f3);
   @apply w-6 h-6 flex justify-center items-center rounded-full z-10;
 }
 
-.Todo .NewTodo .add__new .button__inner__checked img {
+.Todo .NewTodo .add__new .button__inner__checked img, .Todo__light .NewTodo .add__new .button__inner__checked img {
   @apply w-1/2 h-1/3 z-10;
 }
 
-.Todo .NewTodo .add__new:hover {
+.Todo .NewTodo .add__new:hover, .Todo__light .NewTodo .add__new:hover {
   background-image: -webkit-gradient(linear, left top, right bottom, from(#57ddff), to(#c058f3));
   background-image: linear-gradient(to right bottom, #57ddff, #c058f3);
   @apply w-6 h-6 bg-transparent;
 }
 
-.Todo .NewTodo .input__box {
+.Todo .NewTodo .input__box, .Todo__light .NewTodo .input__box {
   @apply ml-6 bg-transparent w-5/6;
 }
 
-.Todo .NewTodo .input__box input {
+.Todo .NewTodo .input__box input, .Todo__light .NewTodo .input__box input {
   border: none;
   @apply bg-transparent w-full text-lg font-bold text-white;
 }
 
-.Todo .NewTodo .input__box input::-webkit-input-placeholder {
+.Todo .NewTodo .input__box input::-webkit-input-placeholder, .Todo__light .NewTodo .input__box input::-webkit-input-placeholder {
   color: #777a92;
 }
 
-.Todo .NewTodo .input__box input:-ms-input-placeholder {
+.Todo .NewTodo .input__box input:-ms-input-placeholder, .Todo__light .NewTodo .input__box input:-ms-input-placeholder {
   color: #777a92;
 }
 
-.Todo .NewTodo .input__box input::-ms-input-placeholder {
+.Todo .NewTodo .input__box input::-ms-input-placeholder, .Todo__light .NewTodo .input__box input::-ms-input-placeholder {
   color: #777a92;
 }
 
-.Todo .NewTodo .input__box input::placeholder {
+.Todo .NewTodo .input__box input::placeholder, .Todo__light .NewTodo .input__box input::placeholder {
   color: #777a92;
 }
 
-.Todo .NewTodo .input__box input:focus {
+.Todo .NewTodo .input__box input:focus, .Todo__light .NewTodo .input__box input:focus {
   outline: 1px solid #4d5066;
 }
 
-.Todo .NewTodo .input__confirm {
+.Todo .NewTodo .input__confirm, .Todo__light .NewTodo .input__confirm {
   border: none;
   @apply ml-auto w-5 flex justify-center items-center h-6 bg-transparent;
 }
 
-.Todo .NewTodo .input__confirm img {
+.Todo .NewTodo .input__confirm img, .Todo__light .NewTodo .input__confirm img {
   @apply w-4;
 }
 
-.Todo .NewTodo .input__confirm:focus {
+.Todo .NewTodo .input__confirm:focus, .Todo__light .NewTodo .input__confirm:focus {
   outline: none;
 }
 
-.Todo .TodoList {
-  @apply w-full mt-6;
+.Todo .TodoList, .Todo__light .TodoList {
+  @apply w-full mt-6 max-h-96 overflow-y-auto;
 }
 
-.Todo .TodoList .List__item {
+.Todo .TodoList .List__item, .Todo__light .TodoList .List__item {
   background-color: #25273c;
   border-bottom: 1px solid #393a4c;
   @apply w-full flex flex-row items-center h-16 px-6  z-30;
 }
 
-.Todo .TodoList .List__item:nth-child(1) {
+.Todo .TodoList .List__item:nth-child(1), .Todo__light .TodoList .List__item:nth-child(1) {
   @apply rounded-tl-lg rounded-tr-lg;
 }
 
-.Todo .TodoList .List__item .item_check {
+.Todo .TodoList .List__item .item_check, .Todo__light .TodoList .List__item .item_check {
   border: none;
   @apply w-6 h-6 rounded-full flex justify-center items-center bg-gray-600;
 }
 
-.Todo .TodoList .List__item .item_check .item__inner {
+.Todo .TodoList .List__item .item_check .item__inner, .Todo__light .TodoList .List__item .item_check .item__inner {
   width: 90%;
   height: 90%;
   margin-top: 4%;
@@ -109,92 +124,191 @@
   @apply rounded-full z-10;
 }
 
-.Todo .TodoList .List__item .item_check .item__inner__checked {
+.Todo .TodoList .List__item .item_check .item__inner__checked, .Todo__light .TodoList .List__item .item_check .item__inner__checked {
   background-image: -webkit-gradient(linear, left top, right bottom, from(#57ddff), to(#c058f3));
   background-image: linear-gradient(to right bottom, #57ddff, #c058f3);
   @apply w-6 h-6 flex justify-center items-center rounded-full z-10;
 }
 
-.Todo .TodoList .List__item .item_check .item__inner__checked img {
+.Todo .TodoList .List__item .item_check .item__inner__checked img, .Todo__light .TodoList .List__item .item_check .item__inner__checked img {
   @apply w-1/2 h-1/3 z-10;
 }
 
-.Todo .TodoList .List__item .item_check:hover {
+.Todo .TodoList .List__item .item_check:hover, .Todo__light .TodoList .List__item .item_check:hover {
   background-image: -webkit-gradient(linear, left top, right bottom, from(#57ddff), to(#c058f3));
   background-image: linear-gradient(to right bottom, #57ddff, #c058f3);
   @apply w-6 h-6 bg-transparent;
 }
 
-.Todo .TodoList .List__item .item__todo, .Todo .TodoList .List__item .item__todo__checked {
+.Todo .TodoList .List__item .item__todo, .Todo .TodoList .List__item .item__todo__checked, .Todo__light .TodoList .List__item .item__todo, .Todo__light .TodoList .List__item .item__todo__checked {
   @apply ml-6 bg-transparent w-5/6;
 }
 
-.Todo .TodoList .List__item .item__todo p, .Todo .TodoList .List__item .item__todo__checked p {
+.Todo .TodoList .List__item .item__todo p, .Todo .TodoList .List__item .item__todo__checked p, .Todo__light .TodoList .List__item .item__todo p, .Todo__light .TodoList .List__item .item__todo__checked p {
   color: #cacde8;
   @apply bg-transparent w-full text-lg font-normal;
 }
 
-.Todo .TodoList .List__item .item__todo__checked p {
+.Todo .TodoList .List__item .item__todo__checked p, .Todo__light .TodoList .List__item .item__todo__checked p {
   color: #4d5066;
+  @apply line-through;
 }
 
-.Todo .TodoList .List__item .item__delete {
+.Todo .TodoList .List__item .item__delete, .Todo__light .TodoList .List__item .item__delete {
   @apply hidden;
 }
 
-.Todo .TodoList .List__item:hover .item__delete {
+.Todo .TodoList .List__item:hover .item__delete, .Todo__light .TodoList .List__item:hover .item__delete {
   @apply block mt-1;
 }
 
-.Todo .TodoList .List__item:hover .item__todo p {
+.Todo .TodoList .List__item:hover .item__todo p, .Todo__light .TodoList .List__item:hover .item__todo p {
   color: #e4e5f1;
 }
 
-.Todo .actions {
+.Todo .actions, .Todo__light .actions {
   background-color: #25273c;
   @apply w-full flex flex-row items-center justify-between h-14 px-6  z-30 rounded-bl-lg rounded-br-lg;
 }
 
-.Todo .actions .items__left p {
+.Todo .actions .items__left p, .Todo__light .actions .items__left p {
   color: #4d5066;
   @apply font-bold text-sm;
 }
 
-.Todo .actions .actions__sort {
+.Todo .actions .actions__sort, .Todo__light .actions .actions__sort {
   width: 10.5rem;
   @apply ml-8 flex  pl-1 flex-row justify-between items-center h-full;
 }
 
-.Todo .actions .actions__sort .items__all p {
+.Todo .actions .actions__sort .items__all p, .Todo__light .actions .actions__sort .items__all p {
   color: #3a7bfd;
 }
 
-.Todo .actions .actions__sort .items__all p:hover {
+.Todo .actions .actions__sort .items__all p:hover, .Todo__light .actions .actions__sort .items__all p:hover {
   color: #3a7bfd;
 }
 
-.Todo .actions .actions__sort p {
+.Todo .actions .actions__sort p, .Todo__light .actions .actions__sort p {
   color: #777a92;
 }
 
-.Todo .actions .clear__completed p {
+.Todo .actions .clear__completed p, .Todo__light .actions .clear__completed p {
   color: #4d5066;
 }
 
-.Todo .actions p {
+.Todo .actions p, .Todo__light .actions p {
   @apply font-bold;
 }
 
-.Todo .actions .actions__sort p:hover, .Todo .actions .clear__completed p:hover {
+.Todo .actions .actions__sort p:hover, .Todo .actions .clear__completed p:hover, .Todo__light .actions .actions__sort p:hover, .Todo__light .actions .clear__completed p:hover {
   color: #e4e5f1;
 }
 
-.Todo .actions button {
+.Todo .actions button, .Todo__light .actions button {
   border: none;
   @apply bg-transparent;
 }
 
-.Todo .actions button:focus {
+.Todo .actions button:focus, .Todo__light .actions button:focus {
   outline: none;
+}
+
+.Todo .drag, .Todo__light .drag {
+  @apply w-full flex items-center justify-center;
+}
+
+.Todo .drag p, .Todo__light .drag p {
+  @apply font-medium text-sm mt-5;
+  color: #4d5066;
+}
+
+.Todo__light button:focus {
+  outline: 1px solid #d2d3db;
+}
+
+.Todo__light .NewTodo {
+  background-color: #fafafa;
+}
+
+.Todo__light .NewTodo .add__new {
+  background-color: #d2d3db;
+}
+
+.Todo__light .NewTodo .add__new .button__inner {
+  background-color: #fafafa;
+}
+
+.Todo__light .NewTodo .input__box input {
+  color: #484b6a;
+}
+
+.Todo__light .NewTodo .input__box input::-webkit-input-placeholder {
+  color: #9394a5;
+}
+
+.Todo__light .NewTodo .input__box input:-ms-input-placeholder {
+  color: #9394a5;
+}
+
+.Todo__light .NewTodo .input__box input::-ms-input-placeholder {
+  color: #9394a5;
+}
+
+.Todo__light .NewTodo .input__box input::placeholder {
+  color: #9394a5;
+}
+
+.Todo__light .NewTodo .input__box input:focus {
+  outline: 1px solid #d2d3db;
+}
+
+.Todo__light .TodoList {
+  @apply w-full mt-6;
+}
+
+.Todo__light .TodoList .List__item {
+  background-color: #fafafa;
+  border-bottom: 1px solid #e4e5f1;
+}
+
+.Todo__light .TodoList .List__item .item_check {
+  background-color: #d2d3db;
+}
+
+.Todo__light .TodoList .List__item .item_check .item__inner {
+  background-color: #fafafa;
+}
+
+.Todo__light .TodoList .List__item .item__todo p, .Todo__light .TodoList .List__item .item__todo__checked p {
+  color: #484b6a;
+}
+
+.Todo__light .TodoList .List__item .item__todo__checked p {
+  color: #d2d3db;
+}
+
+.Todo__light .TodoList .List__item:hover .item__todo p {
+  color: #484b6a;
+}
+
+.Todo__light .actions {
+  background-color: #fafafa;
+}
+
+.Todo__light .actions .items__left p {
+  color: #9394a5;
+}
+
+.Todo__light .actions .actions__sort p {
+  color: #9394a5;
+}
+
+.Todo__light .actions .clear__completed p {
+  color: #9394a5;
+}
+
+.Todo__light .actions .actions__sort p:hover, .Todo__light .actions .clear__completed p:hover {
+  color: #484b6a;
 }
 /*# sourceMappingURL=todo.css.map */

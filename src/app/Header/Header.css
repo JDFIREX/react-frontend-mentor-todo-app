@@ -1,16 +1,20 @@
-.Header {
+.Header, .Header_light {
   width: 34rem;
   @apply flex relative flex-row justify-between items-center mt-16 top-3;
 }
 
-.Header h1 {
+.Header h1, .Header_light h1 {
   letter-spacing: 1.15rem;
   color: #cacde8;
   @apply font-bold text-4xl;
 }
 
-.Header button {
+.Header button, .Header_light button {
   background-color: transparent;
   border: none;
+}
+
+.Header_light h1 {
+  color: #fafafa;
 }
 /*# sourceMappingURL=Header.css.map */
