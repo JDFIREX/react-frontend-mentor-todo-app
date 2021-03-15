@@ -5,12 +5,12 @@
   "main": "./src/app/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JDFIREX/React-Frontend-Mentor-crowdfunding-product-page-main.git"
+    "url": "git+https://github.com/JDFIREX/react-frontend-mentor-todo-app.git"
   },
   "author": "JDFIREX",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/JDFIREX/React-Frontend-Mentor-crowdfunding-product-page-main/issues"
+    "url": "https://github.com/JDFIREX/react-frontend-mentor-todo-app/issues"
   },
   "dependencies": {
     "@craco/craco": "^6.1.1",
